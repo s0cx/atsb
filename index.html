@@ -50,6 +50,7 @@
       font-size: 1.3rem;
       text-align: center;
       transition: background-color 0.3s ease;
+      will-change: transform;
     }
 
     .banner:hover {
@@ -78,7 +79,8 @@
 </head>
 <body>
   <div class="container">
-   <a href="https://ibb.co/nNj7t3TJ"><img src="https://i.ibb.co/Hfqt3N08/output-onlinepngtools.png" alt="output-onlinepngtools" border="0"></a>
+    <img
+      src="https://i.ibb.co/Hfqt3N08/output-onlinepngtools.png"
       alt="Sad cat"
       class="sad-cat"
       draggable="false"
@@ -87,7 +89,7 @@
   </div>
 
   <div class="tamagotchi" onclick="window.location.href='https://austinsimard.com'" title="Secret home link">
-    Dont click me
+    Don't click me
   </div>
 
   <script>
@@ -97,8 +99,8 @@
 
       let posX = 0;
       let posY = 0;
-      let velX = 1.8;
-      let velY = 1.2;
+      let velX = 0.8; // slower speed
+      let velY = 0.6;
 
       function bounce() {
         const containerRect = container.getBoundingClientRect();

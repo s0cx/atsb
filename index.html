@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Under Construction</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f0f4f8;
+      font-family: 'Baloo 2', cursive;
+      color: #555;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    .container {
+      position: relative;
+      width: 320px;
+      height: 320px;
+    }
+
+    img.sad-cat {
+      width: 100%;
+      border-radius: 12px;
+      filter: grayscale(40%);
+      user-select: none;
+      pointer-events: none;
+      display: block;
+    }
+
+    .banner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 12px 20px;
+      background: #d3e2f4;
+      color: #2f496e;
+      font-weight: 700;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(47, 73, 110, 0.15);
+      white-space: nowrap;
+      cursor: default;
+      user-select: none;
+      font-size: 1.3rem;
+      text-align: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .banner:hover {
+      background-color: #aec9e9;
+    }
+
+    .tamagotchi {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #c3d7f0;
+      padding: 8px 16px;
+      border-radius: 14px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #1f3b62;
+      cursor: pointer;
+      user-select: none;
+      box-shadow: 0 3px 6px rgba(31, 59, 98, 0.3);
+      transition: background-color 0.3s ease;
+    }
+    .tamagotchi:hover {
+      background-color: #91b0e3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+   <a href="https://ibb.co/nNj7t3TJ"><img src="https://i.ibb.co/Hfqt3N08/output-onlinepngtools.png" alt="output-onlinepngtools" border="0"></a>
+      alt="Sad cat"
+      class="sad-cat"
+      draggable="false"
+    />
+    <div class="banner" id="banner">This page is under construction 🛠️</div>
+  </div>
+
+  <div class="tamagotchi" onclick="window.location.href='https://austinsimard.com'" title="Secret home link">
+    Dont click me
+  </div>
+
+  <script>
+    (() => {
+      const banner = document.getElementById('banner');
+      const container = document.querySelector('.container');
+
+      let posX = 0;
+      let posY = 0;
+      let velX = 1.8;
+      let velY = 1.2;
+
+      function bounce() {
+        const containerRect = container.getBoundingClientRect();
+        const bannerRect = banner.getBoundingClientRect();
+
+        posX += velX;
+        posY += velY;
+
+        if (posX + bannerRect.width > containerRect.width) {
+          posX = containerRect.width - bannerRect.width;
+          velX *= -1;
+        } else if (posX < 0) {
+          posX = 0;
+          velX *= -1;
+        }
+
+        if (posY + bannerRect.height > containerRect.height) {
+          posY = containerRect.height - bannerRect.height;
+          velY *= -1;
+        } else if (posY < 0) {
+          posY = 0;
+          velY *= -1;
+        }
+
+        banner.style.transform = `translate(${posX}px, ${posY}px)`;
+        requestAnimationFrame(bounce);
+      }
+
+      bounce();
+    })();
+  </script>
+</body>
+</html>
